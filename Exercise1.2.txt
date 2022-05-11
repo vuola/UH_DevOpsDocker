@@ -1,0 +1,48 @@
+(base) vuola@Markuss-MacBook-Air ~ % docker container prune
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+a05dc19fce56f2eb24428cd8b562e37421f7a5edd0a050cd8a299696ab6d513a
+1910d8bced36f34fce747695b2bd41dff74140f55fccd5b6ec06f0b32da6762a
+
+Total reclaimed space: 2.186kB
+(base) vuola@Markuss-MacBook-Air ~ % docker container stop 95
+95
+(base) vuola@Markuss-MacBook-Air ~ % docker container prune  
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+95f408581743083caa0cd2f09dd906492628a58f282d990e15075bc128005ef1
+
+Total reclaimed space: 1.093kB
+(base) vuola@Markuss-MacBook-Air ~ % docker ps -a 
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+(base) vuola@Markuss-MacBook-Air ~ % docker images 
+REPOSITORY               TAG       IMAGE ID       CREATED       SIZE
+nginx                    latest    fa5269854a5e   2 weeks ago   142MB
+docker/getting-started   latest    cb90f98fd791   3 weeks ago   28.8MB
+(base) vuola@Markuss-MacBook-Air ~ % docker image rm fa
+Untagged: nginx:latest
+Untagged: nginx@sha256:859ab6768a6f26a79bc42b231664111317d095a4f04e4b6fe79ce37b3d199097
+Deleted: sha256:fa5269854a5e615e51a72b17ad3fd1e01268f278a6684c8ed3c5f0cdce3f230b
+Deleted: sha256:5a730c5c122e844d0933a20b7b2fda1fc3bd33987869dbd2b59396d80b0bcfca
+Deleted: sha256:1c253cdf8e00753daf0cc7ce52d6e6371a1679db912912e6e854dd09ba8b4e97
+Deleted: sha256:532887908ca58c17ffd4946a51bfa01dc897f4ebf25f69fc149736f4fd6e8366
+Deleted: sha256:1c4fd4da0a6c4dec7037b57b8b24ca6a346209983cbe63264afe4e724a8a9976
+Deleted: sha256:186315e6b3b440e7935f059ccdaea035e03ccdb3133bc87055a299469d51717c
+Deleted: sha256:9c1b6dd6c1e6be9fdd2b1987783824670d3b0dd7ae8ad6f57dc3cea5739ac71e
+(base) vuola@Markuss-MacBook-Air ~ % docker image rm cb
+Untagged: docker/getting-started:latest
+Untagged: docker/getting-started@sha256:b558be874169471bd4e65bd6eac8c303b271a7ee8553ba47481b73b2bf597aae
+Deleted: sha256:cb90f98fd791dd49f09903cef3eb2245646b4d76b093825ea78e0f7bb8fb3403
+Deleted: sha256:b6b308c7ce72e0286f9455b9f76ae6cafe55fcc6b068950414165f43bda11fd7
+Deleted: sha256:711ca3e1c68e1406fd5b96a71fcf29e4838887b827bd4ee48dfc6e6a62d8fabf
+Deleted: sha256:1380ce106a10fac3c312f83ddf8406d187d5c0dd567d9a2454abe6ba563114cd
+Deleted: sha256:36e9639dd7f8b2549aba50c0a7d2402510ddb99d3e789515ab6646f21ef392ec
+Deleted: sha256:b35646458162a8f3289c0605c02ad46c2a05ae5c977a46e11d56962b373e1e98
+Deleted: sha256:e61e5c961a35926efc4df0bcd33aa988c860ba8440ae2bb713084b14b89c9806
+Deleted: sha256:f60e2e50f4b58e60ef21034b9d2df92705fa8bb3870b2ca81089de8af45a2e90
+Deleted: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628
+(base) vuola@Markuss-MacBook-Air ~ % docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+(base) vuola@Markuss-MacBook-Air ~ % 

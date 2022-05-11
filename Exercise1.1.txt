@@ -1,0 +1,5 @@
+(base) vuola@Markuss-MacBook-Air ~ % docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS                      PORTS     NAMES
+a05dc19fce56   nginx     "/docker-entrypoint.…"   About a minute ago   Exited (0) 18 seconds ago             eager_moore
+1910d8bced36   nginx     "/docker-entrypoint.…"   About a minute ago   Exited (0) 8 seconds ago              great_benz
+95f408581743   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute           80/tcp    intelligent_jones

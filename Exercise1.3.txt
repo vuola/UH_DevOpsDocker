@@ -1,0 +1,30 @@
+(base) vuola@Markuss-MacBook-Air ~ % docker run -d --rm -it --name secret devopsdockeruh/simple-web-service:ubuntu         
+Unable to find image 'devopsdockeruh/simple-web-service:ubuntu' locally
+ubuntu: Pulling from devopsdockeruh/simple-web-service
+5d3b2c2d21bb: Pull complete 
+3fc2062ea667: Pull complete 
+75adf526d75b: Pull complete 
+965d4bbb586a: Pull complete 
+4f4fb700ef54: Pull complete 
+Digest: sha256:d44e1dce398732e18c7c2bad9416a072f719af33498302b02929d4c112e88d2a
+Status: Downloaded newer image for devopsdockeruh/simple-web-service:ubuntu
+787bc27aefd2dd3179621d2a0aa4280af554d38d6d8c04ed12cf9b66cd943f3e
+(base) vuola@Markuss-MacBook-Air ~ % docker exec -it secret bash
+root@787bc27aefd2:/usr/src/app# tail -f ./text.log
+2022-05-06 11:52:11 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2022-05-06 11:52:13 +0000 UTC
+2022-05-06 11:52:15 +0000 UTC
+2022-05-06 11:52:17 +0000 UTC
+2022-05-06 11:52:19 +0000 UTC
+2022-05-06 11:52:21 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2022-05-06 11:52:23 +0000 UTC
+2022-05-06 11:52:25 +0000 UTC
+2022-05-06 11:52:27 +0000 UTC
+2022-05-06 11:52:29 +0000 UTC
+2022-05-06 11:52:31 +0000 UTC
+^C
+root@787bc27aefd2:/usr/src/app# exit
+exit
+(base) vuola@Markuss-MacBook-Air ~ % 
