@@ -1,0 +1,24 @@
+(base) vuola@Markuss-MacBook-Air example-frontend % docker build . -t example-frontend
+[+] Building 34.8s (12/12) FINISHED                                                                                                                                                                         
+ => [internal] load build definition from Dockerfile                                                                                                                                                   0.1s
+ => => transferring dockerfile: 536B                                                                                                                                                                   0.0s
+ => [internal] load .dockerignore                                                                                                                                                                      0.0s
+ => => transferring context: 34B                                                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/node:16                                                                                                                                             1.4s
+ => [1/7] FROM docker.io/library/node:16@sha256:1817bb941c9a30fe2a6d75ff8675a8f6def408efe3d3ff43dbb006e2b534fa14                                                                                       0.0s
+ => [internal] load build context                                                                                                                                                                      0.0s
+ => => transferring context: 16.23kB                                                                                                                                                                   0.0s
+ => CACHED [2/7] WORKDIR /home/node/app                                                                                                                                                                0.0s
+ => CACHED [3/7] COPY package* ./                                                                                                                                                                      0.0s
+ => CACHED [4/7] RUN npm install                                                                                                                                                                       0.0s
+ => CACHED [5/7] RUN npm install -g serve                                                                                                                                                              0.0s
+ => [6/7] COPY . .                                                                                                                                                                                     0.1s
+ => [7/7] RUN npm run build                                                                                                                                                                           32.6s
+ => exporting to image                                                                                                                                                                                 0.5s 
+ => => exporting layers                                                                                                                                                                                0.4s 
+ => => writing image sha256:863507c55bd5669a5fb3cae4fbbe6271ce75d22fb6cedebe747e79ff9e1761a9                                                                                                           0.0s 
+ => => naming to docker.io/library/example-frontend                                                                                                                                                    0.0s 
+                                                                                                                                                                                                            
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them                                                                                                        
+(base) vuola@Markuss-MacBook-Air example-frontend % docker run -p 5000:5000 example-frontend
+INFO: Accepting connections at http://localhost:5000
