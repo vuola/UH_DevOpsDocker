@@ -1,0 +1,55 @@
+ase) vuola@Markuss-MacBook-Air example-backend % docker build . -t example-backend       
+[+] Building 90.2s (10/10) FINISHED                                                                                                                                                                         
+ => [internal] load build definition from Dockerfile                                                                                                                                                   0.0s
+ => => transferring dockerfile: 559B                                                                                                                                                                   0.0s
+ => [internal] load .dockerignore                                                                                                                                                                      0.0s
+ => => transferring context: 111B                                                                                                                                                                      0.0s
+ => [internal] load metadata for docker.io/library/golang:1.16                                                                                                                                         2.2s
+ => [1/5] FROM docker.io/library/golang:1.16@sha256:5f6a4662de3efc6d6bb812d02e9de3d8698eea16b8eb7281f03e6f3e8383018e                                                                                  59.2s
+ => => resolve docker.io/library/golang:1.16@sha256:5f6a4662de3efc6d6bb812d02e9de3d8698eea16b8eb7281f03e6f3e8383018e                                                                                   0.0s
+ => => sha256:ff5b10aec998344606441aec43a335ab6326f32aae331aab27da16a6bb4ec2be 10.87MB / 10.87MB                                                                                                       6.1s
+ => => sha256:5f6a4662de3efc6d6bb812d02e9de3d8698eea16b8eb7281f03e6f3e8383018e 2.35kB / 2.35kB                                                                                                         0.0s
+ => => sha256:972d8c0bc0fc7d67045f744b6949c2884e6c64bc6b262d511a853b4b5aeb0d23 7.05kB / 7.05kB                                                                                                         0.0s
+ => => sha256:4ff1945c672b08a1791df62afaaf8aff14d3047155365f9c3646902937f7ffe6 5.15MB / 5.15MB                                                                                                         2.1s
+ => => sha256:35fa3cfd4ec01a520f6986535d8f70a5eeef2d40fb8019ff626da24989bdd4f1 1.80kB / 1.80kB                                                                                                         0.0s
+ => => sha256:e4d61adff2077d048c6372d73c41b0bd68f525ad41f5530af05098a876683055 54.92MB / 54.92MB                                                                                                       8.5s
+ => => sha256:12de8c754e45686ace9e25d11bee372b070eed5b5ab20aa3b4fab8c936496d02 54.58MB / 54.58MB                                                                                                      14.2s
+ => => sha256:8c86ff77a3175ed4d7958578d141a96b5da005855d60ea24067de33cd62e4c36 85.81MB / 85.81MB                                                                                                      24.2s
+ => => sha256:0395a1c478ba68635e5d1bc9349b8fddba5584adc454cec751cd3f29af9080aa 129.16MB / 129.16MB                                                                                                    29.9s
+ => => extracting sha256:e4d61adff2077d048c6372d73c41b0bd68f525ad41f5530af05098a876683055                                                                                                             15.9s
+ => => sha256:245345d44ed8225f5d3f80fb591b72fddeb8e40e1020926849fcaf0aac1ed060 156B / 156B                                                                                                            14.5s
+ => => extracting sha256:4ff1945c672b08a1791df62afaaf8aff14d3047155365f9c3646902937f7ffe6                                                                                                              1.5s
+ => => extracting sha256:ff5b10aec998344606441aec43a335ab6326f32aae331aab27da16a6bb4ec2be                                                                                                              2.2s
+ => => extracting sha256:12de8c754e45686ace9e25d11bee372b070eed5b5ab20aa3b4fab8c936496d02                                                                                                              5.6s
+ => => extracting sha256:8c86ff77a3175ed4d7958578d141a96b5da005855d60ea24067de33cd62e4c36                                                                                                              7.8s
+ => => extracting sha256:0395a1c478ba68635e5d1bc9349b8fddba5584adc454cec751cd3f29af9080aa                                                                                                             13.5s
+ => => extracting sha256:245345d44ed8225f5d3f80fb591b72fddeb8e40e1020926849fcaf0aac1ed060                                                                                                              0.0s
+ => [internal] load build context                                                                                                                                                                      0.0s
+ => => transferring context: 28.90kB                                                                                                                                                                   0.0s
+ => [2/5] WORKDIR /home/golang/app                                                                                                                                                                     0.8s
+ => [3/5] COPY . .                                                                                                                                                                                     0.0s
+ => [4/5] RUN go build                                                                                                                                                                                24.7s
+ => [5/5] RUN chmod u+x ./server                                                                                                                                                                       0.5s
+ => exporting to image                                                                                                                                                                                 2.5s
+ => => exporting layers                                                                                                                                                                                2.4s
+ => => writing image sha256:0d7b9a124ecbb379267744c448d9a57dd75b119e1b6d98c851a8942d38889701                                                                                                           0.0s
+ => => naming to docker.io/library/example-backend                                                                                                                                                     0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+(base) vuola@Markuss-MacBook-Air example-backend % docker run -p 8080:8080 example-backend 
+[Ex 2.4+] REDIS_HOST env was not passed so redis connection is not initialized
+[Ex 2.6+] POSTGRES_HOST env was not passed so postgres connection is not initialized
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:   export GIN_MODE=release
+ - using code:  gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ping                     --> server/router.pingpong (4 handlers)
+[GIN-debug] GET    /messages                 --> server/controller.GetMessages (4 handlers)
+[GIN-debug] POST   /messages                 --> server/controller.CreateMessage (4 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2022/05/15 - 10:23:00 | 200 |     220.317µs |      172.17.0.1 | GET      "/ping"
+[GIN] 2022/05/15 - 10:23:01 | 404 |     115.759µs |      172.17.0.1 | GET      "/apple-touch-icon-precomposed.png"
+[GIN] 2022/05/15 - 10:23:01 | 404 |      64.852µs |      172.17.0.1 | GET      "/favicon.ico"
+[GIN] 2022/05/15 - 10:23:01 | 404 |     117.358µs |      172.17.0.1 | GET      "/apple-touch-icon.png"
