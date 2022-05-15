@@ -1,0 +1,62 @@
+(base) vuola@Markuss-MacBook-Air example-backend % docker build . -t example-backend       
+[+] Building 1.7s (10/10) FINISHED                                                                                                  
+ => [internal] load build definition from Dockerfile                                                                           0.0s
+ => => transferring dockerfile: 415B                                                                                           0.0s
+ => [internal] load .dockerignore                                                                                              0.0s
+ => => transferring context: 111B                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/golang:1.16                                                                 1.5s
+ => [internal] load build context                                                                                              0.0s
+ => => transferring context: 28.90kB                                                                                           0.0s
+ => [1/5] FROM docker.io/library/golang:1.16@sha256:5f6a4662de3efc6d6bb812d02e9de3d8698eea16b8eb7281f03e6f3e8383018e           0.0s
+ => CACHED [2/5] WORKDIR /home/golang/app                                                                                      0.0s
+ => CACHED [3/5] COPY . .                                                                                                      0.0s
+ => CACHED [4/5] RUN go build                                                                                                  0.0s
+ => CACHED [5/5] RUN chmod u+x ./server                                                                                        0.0s
+ => exporting to image                                                                                                         0.0s
+ => => exporting layers                                                                                                        0.0s
+ => => writing image sha256:2d3540e20e35d73142f7a5495fd5c48d31608e04bd773adb96524fee0f3ae4e1                                   0.0s
+ => => naming to docker.io/library/example-backend                                                                             0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+(base) vuola@Markuss-MacBook-Air example-backend % docker run -p 8000:8000 example-backend
+[Ex 2.4+] REDIS_HOST env was not passed so redis connection is not initialized
+[Ex 2.6+] POSTGRES_HOST env was not passed so postgres connection is not initialized
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ping                     --> server/router.pingpong (4 handlers)
+[GIN-debug] GET    /messages                 --> server/controller.GetMessages (4 handlers)
+[GIN-debug] POST   /messages                 --> server/controller.CreateMessage (4 handlers)
+[GIN-debug] Listening and serving HTTP on :8000
+[GIN] 2022/05/15 - 16:41:30 | 200 |     349.663µs |      172.17.0.1 | GET      "/ping"
+[GIN] 2022/05/15 - 16:42:34 | 200 |      81.383µs |      172.17.0.1 | GET      "/ping"
+
+
+(base) vuola@Markuss-MacBook-Air example-frontend % docker build . -t example-frontend      
+[+] Building 35.5s (12/12) FINISHED                                                                                                                                                                                                                     
+ => [internal] load build definition from Dockerfile                                                                                                                                                                                               0.1s
+ => => transferring dockerfile: 584B                                                                                                                                                                                                               0.0s
+ => [internal] load .dockerignore                                                                                                                                                                                                                  0.0s
+ => => transferring context: 34B                                                                                                                                                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/node:16                                                                                                                                                                                         1.5s
+ => [internal] load build context                                                                                                                                                                                                                  0.0s
+ => => transferring context: 1.21kB                                                                                                                                                                                                                0.0s
+ => [1/7] FROM docker.io/library/node:16@sha256:1817bb941c9a30fe2a6d75ff8675a8f6def408efe3d3ff43dbb006e2b534fa14                                                                                                                                   0.0s
+ => CACHED [2/7] WORKDIR /home/node/app                                                                                                                                                                                                            0.0s
+ => CACHED [3/7] COPY package* ./                                                                                                                                                                                                                  0.0s
+ => CACHED [4/7] RUN npm install                                                                                                                                                                                                                   0.0s
+ => CACHED [5/7] RUN npm install -g serve                                                                                                                                                                                                          0.0s
+ => CACHED [6/7] COPY . .                                                                                                                                                                                                                          0.0s
+ => [7/7] RUN npm run build                                                                                                                                                                                                                       33.5s
+ => exporting to image                                                                                                                                                                                                                             0.3s 
+ => => exporting layers                                                                                                                                                                                                                            0.3s 
+ => => writing image sha256:ca280796e4c1ed7bf8844585f606ec65dffc0250303cfdc3cd8979ebc3d70479                                                                                                                                                       0.0s 
+ => => naming to docker.io/library/example-frontend                                                                                                                                                                                                0.0s 
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+(base) vuola@Markuss-MacBook-Air example-frontend % docker run -p 5000:5000 example-frontend
+INFO: Accepting connections at http://localhost:5000
+
