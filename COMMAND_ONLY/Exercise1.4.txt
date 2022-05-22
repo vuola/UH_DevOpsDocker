@@ -1,0 +1,16 @@
+(base) vuola@Markuss-MacBook-Air ~ % docker run -it -d --name website ubuntu sh -c 'echo "Input website:"; read website; echo "Searching ..."; sleep 1; curl http://$website;'
+(base) vuola@Markuss-MacBook-Air ~ % docker exec -it website bash                                                                                                             
+root@2fb6846282e8:/# apt update
+root@2fb6846282e8:/# apt upgrade
+root@2fb6846282e8:/# apt install curl
+root@2fb6846282e8:/# exit
+(base) vuola@Markuss-MacBook-Air ~ % docker attach website                                                                                                                    
+helsinki.fi
+Searching ...
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="https://www.helsinki.fi/">here</a>.</p>
+</body></html>

@@ -1,0 +1,14 @@
+(base) vuola@Markuss-MacBook-Air ~ % docker pull devopsdockeruh/simple-web-service:ubuntu
+(base) vuola@Markuss-MacBook-Air ~ % docker pull devopsdockeruh/simple-web-service:alpine
+(base) vuola@Markuss-MacBook-Air ~ % docker image ls
+REPOSITORY                          TAG       IMAGE ID       CREATED         SIZE
+devopsdockeruh/simple-web-service   ubuntu    4e3362e907d5   13 months ago   83MB
+devopsdockeruh/simple-web-service   alpine    fd312adc88e0   13 months ago   15.7MB
+
+(base) vuola@Markuss-MacBook-Air ~ % docker run -d --rm -it --name secret devopsdockeruh/simple-web-service:ubuntu
+(base) vuola@Markuss-MacBook-Air ~ % docker exec -it secret sh
+# tail -f ./text.log
+2022-05-06 17:59:37 +0000 UTC
+2022-05-06 17:59:39 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+# exit

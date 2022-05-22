@@ -1,0 +1,9 @@
+(base) vuola@Markuss-MacBook-Air Exercise1.9 % touch text.log
+(base) vuola@Markuss-MacBook-Air Exercise1.9 % docker run -v "$(pwd)/text.log:/usr/src/app/text.log" devopsdockeruh/simple-web-service
+(base) vuola@Markuss-MacBook-Air Exercise1.9 % ls
+text.log
+(base) vuola@Markuss-MacBook-Air Exercise1.9 % cat text.log 
+2022-05-14 18:26:10 +0000 UTC
+2022-05-14 18:26:12 +0000 UTC
+2022-05-14 18:26:14 +0000 UTC
+2022-05-14 18:26:16 +0000 UTC

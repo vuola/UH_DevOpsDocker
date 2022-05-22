@@ -1,0 +1,3 @@
+(base) vuola@Markuss-MacBook-Air Exercise1.7 % docker build . -t web-server
+(base) vuola@Markuss-MacBook-Air Exercise1.7 % docker run web-server       
+

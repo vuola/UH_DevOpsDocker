@@ -1,0 +1,8 @@
+(base) vuola@Markuss-MacBook-Air ~ % docker container prune
+(base) vuola@Markuss-MacBook-Air ~ % docker container stop 95
+(base) vuola@Markuss-MacBook-Air ~ % docker container prune  
+(base) vuola@Markuss-MacBook-Air ~ % docker ps -a 
+(base) vuola@Markuss-MacBook-Air ~ % docker images 
+(base) vuola@Markuss-MacBook-Air ~ % docker image rm fa
+(base) vuola@Markuss-MacBook-Air ~ % docker image rm cb
+(base) vuola@Markuss-MacBook-Air ~ % docker images

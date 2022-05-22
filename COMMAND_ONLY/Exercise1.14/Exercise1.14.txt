@@ -1,0 +1,12 @@
+(base) vuola@Markuss-MacBook-Air example-backend % docker build . -t example-backend       
+(base) vuola@Markuss-MacBook-Air example-backend % docker run -p 8000:8000 example-backend
+
+[GIN-debug] Listening and serving HTTP on :8000
+[GIN] 2022/05/15 - 16:41:30 | 200 |     349.663µs |      172.17.0.1 | GET      "/ping"
+[GIN] 2022/05/15 - 16:42:34 | 200 |      81.383µs |      172.17.0.1 | GET      "/ping"
+
+(base) vuola@Markuss-MacBook-Air example-frontend % docker build . -t example-frontend      
+(base) vuola@Markuss-MacBook-Air example-frontend % docker run -p 5000:5000 example-frontend
+
+INFO: Accepting connections at http://localhost:5000
+

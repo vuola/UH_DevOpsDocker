@@ -1,0 +1,9 @@
+(base) vuola@Markuss-MacBook-Air ~ % docker run -d --rm -it --name secret devopsdockeruh/simple-web-service:ubuntu         
+(base) vuola@Markuss-MacBook-Air ~ % docker exec -it secret bash
+
+root@787bc27aefd2:/usr/src/app# tail -f ./text.log
+
+2022-05-06 11:52:11 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+
+root@787bc27aefd2:/usr/src/app# exit

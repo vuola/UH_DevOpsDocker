@@ -1,0 +1,8 @@
+(base) vuola@Markuss-MacBook-Air example-backend % docker build . -t example-backend       
+(base) vuola@Markuss-MacBook-Air example-backend % docker run -p 8080:8080 example-backend 
+
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2022/05/15 - 10:23:00 | 200 |     220.317µs |      172.17.0.1 | GET      "/ping"
+[GIN] 2022/05/15 - 10:23:01 | 404 |     115.759µs |      172.17.0.1 | GET      "/apple-touch-icon-precomposed.png"
+[GIN] 2022/05/15 - 10:23:01 | 404 |      64.852µs |      172.17.0.1 | GET      "/favicon.ico"
+[GIN] 2022/05/15 - 10:23:01 | 404 |     117.358µs |      172.17.0.1 | GET      "/apple-touch-icon.png"
