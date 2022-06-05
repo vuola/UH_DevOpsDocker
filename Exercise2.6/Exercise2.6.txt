@@ -1,0 +1,94 @@
+(base) vuola@Markuss-MacBook-Air material-applications % docker-compose up
+Creating network "material-applications_default" with the default driver
+Creating volume "material-applications_cache-data" with default driver
+Creating material-applications_frontend_1    ... done
+Creating db_backend                          ... done
+Creating material-applications_cache-redis_1 ... done
+Creating material-applications_backend_1     ... done
+Attaching to db_backend, material-applications_cache-redis_1, material-applications_frontend_1, material-applications_backend_1
+db_backend     | The files belonging to this database system will be owned by user "postgres".
+db_backend     | This user must also own the server process.
+db_backend     | 
+db_backend     | The database cluster will be initialized with locale "en_US.utf8".
+db_backend     | The default database encoding has accordingly been set to "UTF8".
+db_backend     | The default text search configuration will be set to "english".
+db_backend     | 
+db_backend     | Data page checksums are disabled.
+db_backend     | 
+db_backend     | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+db_backend     | creating subdirectories ... ok
+db_backend     | selecting dynamic shared memory implementation ... posix
+db_backend     | selecting default max_connections ... 100
+db_backend     | selecting default shared_buffers ... 128MB
+db_backend     | selecting default time zone ... UTC
+db_backend     | creating configuration files ... ok
+db_backend     | running bootstrap script ... ok
+cache-redis_1  | 1:C 04 Jun 2022 15:36:58.955 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+cache-redis_1  | 1:C 04 Jun 2022 15:36:58.956 # Redis version=7.0.0, bits=64, commit=00000000, modified=0, pid=1, just started
+cache-redis_1  | 1:C 04 Jun 2022 15:36:58.957 # Configuration loaded
+cache-redis_1  | 1:M 04 Jun 2022 15:36:58.975 # Server initialized
+backend_1      | [Ex 2.4+] Initializing redis client
+backend_1      | [Ex 2.4+] Connection to redis initialized, ready to ping pong.
+backend_1      | [Ex 2.6+] Initializing postgres connection with envs
+backend_1      |                POSTGRES_HOST      db_backend,
+backend_1      |                POSTGRES_USER:     postgres,
+backend_1      |                POSTGRES_PASSWORD: example,
+backend_1      |                POSTGRES_DATABASE: postgres
+backend_1      |                to db_backend:5432
+backend_1      | [Ex 2.6+] Connection to postgres failed! Retrying...
+db_backend     | performing post-bootstrap initialization ... sh: locale: not found
+db_backend     | 2022-06-04 15:37:01.200 UTC [31] WARNING:  no usable system locales were found
+frontend_1     | INFO: Accepting connections at http://localhost:5000
+db_backend     | ok
+db_backend     | syncing data to disk ... ok
+db_backend     | 
+db_backend     | 
+db_backend     | Success. You can now start the database server using:
+db_backend     | 
+db_backend     |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+db_backend     | 
+db_backend     | initdb: warning: enabling "trust" authentication for local connections
+db_backend     | You can change this by editing pg_hba.conf or using the option -A, or
+db_backend     | --auth-local and --auth-host, the next time you run initdb.
+db_backend     | waiting for server to start....2022-06-04 15:37:03.059 UTC [36] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-musl, compiled by gcc (Alpine 10.2.1_pre1) 10.2.1 20201203, 64-bit
+db_backend     | 2022-06-04 15:37:03.065 UTC [36] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db_backend     | 2022-06-04 15:37:03.079 UTC [37] LOG:  database system was shut down at 2022-06-04 15:37:02 UTC
+db_backend     | 2022-06-04 15:37:03.091 UTC [36] LOG:  database system is ready to accept connections
+db_backend     |  done
+db_backend     | server started
+db_backend     | 
+db_backend     | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+db_backend     | 
+db_backend     | waiting for server to shut down....2022-06-04 15:37:03.160 UTC [36] LOG:  received fast shutdown request
+db_backend     | 2022-06-04 15:37:03.166 UTC [36] LOG:  aborting any active transactions
+db_backend     | 2022-06-04 15:37:03.169 UTC [36] LOG:  background worker "logical replication launcher" (PID 43) exited with exit code 1
+db_backend     | 2022-06-04 15:37:03.170 UTC [38] LOG:  shutting down
+db_backend     | 2022-06-04 15:37:03.201 UTC [36] LOG:  database system is shut down
+db_backend     |  done
+db_backend     | server stopped
+db_backend     | 
+db_backend     | PostgreSQL init process complete; ready for start up.
+db_backend     | 
+db_backend     | 2022-06-04 15:37:03.294 UTC [1] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-musl, compiled by gcc (Alpine 10.2.1_pre1) 10.2.1 20201203, 64-bit
+db_backend     | 2022-06-04 15:37:03.296 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db_backend     | 2022-06-04 15:37:03.296 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db_backend     | 2022-06-04 15:37:03.306 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db_backend     | 2022-06-04 15:37:03.315 UTC [48] LOG:  database system was shut down at 2022-06-04 15:37:03 UTC
+db_backend     | 2022-06-04 15:37:03.327 UTC [1] LOG:  database system is ready to accept connections
+backend_1      | [Ex 2.6+] Connection to postgres initialized, ready to ping pong.
+backend_1      | [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+backend_1      | 
+backend_1      | [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+backend_1      |  - using env:  export GIN_MODE=release
+backend_1      |  - using code: gin.SetMode(gin.ReleaseMode)
+backend_1      | 
+backend_1      | [GIN-debug] GET    /ping                     --> server/router.pingpong (4 handlers)
+backend_1      | [GIN-debug] GET    /messages                 --> server/controller.GetMessages (4 handlers)
+backend_1      | [GIN-debug] POST   /messages                 --> server/controller.CreateMessage (4 handlers)
+backend_1      | [GIN-debug] Listening and serving HTTP on :8000
+backend_1      | [GIN] 2022/06/04 - 15:37:47 | 200 |    1.501093ms |    192.168.32.1 | GET      "/ping"
+backend_1      | ping pong
+backend_1      | [GIN] 2022/06/04 - 15:37:50 | 200 |     569.965µs |    192.168.32.1 | GET      "/ping?redis=true"
+backend_1      | [GIN] 2022/06/04 - 15:38:03 | 204 |      32.818µs |    192.168.32.1 | OPTIONS  "/messages"
+backend_1      | [GIN] 2022/06/04 - 15:38:03 | 200 |   38.970029ms |    192.168.32.1 | POST     "/messages"
+backend_1      | [GIN] 2022/06/04 - 15:38:03 | 200 |    1.497273ms |    192.168.32.1 | GET      "/messages"

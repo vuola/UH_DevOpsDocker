@@ -1,0 +1,46 @@
+services:
+  frontend:
+    image: example-frontend
+    ports:
+      - "5000:5000"
+    build: 
+      context: front
+      args:
+        - _REACT_APP_BACKEND_URL_=http://localhost:8000
+
+  backend:
+    environment:
+      - PORT=8000
+      - REQUEST_ORIGIN=http://localhost:5000
+      - REDIS_HOST=cache-redis
+      - POSTGRES_HOST=db_backend
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DATABASE=postgres
+    image: example-backend
+    ports:
+      - "8000:8000" 
+    build:
+      context: back
+    restart: unless-stopped
+    depends_on:
+      - db_backend
+
+  cache-redis:
+    image: redis
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+    volumes:
+    - cache-data:/etc/data
+
+  db_backend:
+    image: postgres:13.2-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=postgres
+    container_name: db_backend
+
+volumes:
+  cache-data:
+

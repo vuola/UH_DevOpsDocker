@@ -1,0 +1,31 @@
+services:
+  frontend:
+    image: example-frontend
+    ports:
+      - "5000:5000"
+    build: 
+      context: front
+      args:
+        - _REACT_APP_BACKEND_URL_=http://localhost:8000
+
+  backend:
+    environment:
+      - PORT=8000
+      - REQUEST_ORIGIN=http://localhost:5000
+      - REDIS_HOST=cache-redis
+    image: example-backend
+    ports:
+      - "8000:8000" 
+    build:
+      context: back
+    restart: unless-stopped
+
+  cache-redis:
+    image: redis
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+    volumes:
+    - cache-data:/etc/data
+
+volumes:
+  cache-data:
+

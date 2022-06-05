@@ -1,0 +1,28 @@
+(base) vuola@Markuss-MacBook-Air material-applications % docker-compose up              
+Creating network "material-applications_default" with the default driver
+Creating material-applications_cache-redis_1 ... done
+Creating material-applications_frontend_1    ... done
+Creating material-applications_backend_1     ... done
+Attaching to material-applications_cache-redis_1, material-applications_frontend_1, material-applications_backend_1
+cache-redis_1  | 1:C 03 Jun 2022 19:18:44.956 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+cache-redis_1  | 1:C 03 Jun 2022 19:18:44.956 # Redis version=7.0.0, bits=64, commit=00000000, modified=0, pid=1, just started
+cache-redis_1  | 1:C 03 Jun 2022 19:18:44.956 # Configuration loaded
+cache-redis_1  | 1:M 03 Jun 2022 19:18:44.960 # Server initialized
+backend_1      | [Ex 2.4+] Initializing redis client
+backend_1      | [Ex 2.4+] Connection to redis initialized, ready to ping pong.
+backend_1      | [Ex 2.6+] POSTGRES_HOST env was not passed so postgres connection is not initialized
+backend_1      | [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+backend_1      | 
+backend_1      | [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+backend_1      |  - using env:  export GIN_MODE=release
+backend_1      |  - using code: gin.SetMode(gin.ReleaseMode)
+backend_1      | 
+backend_1      | [GIN-debug] GET    /ping                     --> server/router.pingpong (4 handlers)
+backend_1      | [GIN-debug] GET    /messages                 --> server/controller.GetMessages (4 handlers)
+backend_1      | [GIN-debug] POST   /messages                 --> server/controller.CreateMessage (4 handlers)
+backend_1      | [GIN-debug] Listening and serving HTTP on :8000
+frontend_1     | INFO: Accepting connections at http://localhost:5000
+backend_1      | [GIN] 2022/06/03 - 19:18:53 | 200 |     723.588µs |      172.22.0.1 | GET      "/ping"
+backend_1      | ping pong
+backend_1      | [GIN] 2022/06/03 - 19:18:55 | 200 |     509.462µs |      172.22.0.1 | GET      "/ping?redis=true"
+

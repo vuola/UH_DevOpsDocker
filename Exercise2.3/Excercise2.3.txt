@@ -1,0 +1,20 @@
+(base) vuola@Markuss-MacBook-Air Exercise2.3 % docker-compose up
+Creating network "exercise23_default" with the default driver
+Creating exercise23_frontend_1 ... done
+Creating exercise23_backend_1  ... done
+Attaching to exercise23_backend_1, exercise23_frontend_1
+backend_1   | [Ex 2.4+] REDIS_HOST env was not passed so redis connection is not initialized
+backend_1   | [Ex 2.6+] POSTGRES_HOST env was not passed so postgres connection is not initialized
+backend_1   | [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+backend_1   | 
+backend_1   | [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+backend_1   |  - using env:     export GIN_MODE=release
+backend_1   |  - using code:    gin.SetMode(gin.ReleaseMode)
+backend_1   | 
+backend_1   | [GIN-debug] GET    /ping                     --> server/router.pingpong (4 handlers)
+backend_1   | [GIN-debug] GET    /messages                 --> server/controller.GetMessages (4 handlers)
+backend_1   | [GIN-debug] POST   /messages                 --> server/controller.CreateMessage (4 handlers)
+backend_1   | [GIN-debug] Listening and serving HTTP on :8000
+frontend_1  | INFO: Accepting connections at http://localhost:5000
+backend_1   | [GIN] 2022/06/02 - 11:12:48 | 200 |     218.977µs |      172.22.0.1 | GET      "/ping"
+frontend_1  | 

@@ -1,0 +1,18 @@
+(base) vuola@Markuss-MacBook-Air Exercise2.2 % docker-compose up
+Recreating simple-web-service ... done
+Attaching to simple-web-service
+simple-web-service           | [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+simple-web-service           | 
+simple-web-service           | [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+simple-web-service           |  - using env:    export GIN_MODE=release
+simple-web-service           |  - using code:   gin.SetMode(gin.ReleaseMode)
+simple-web-service           | 
+simple-web-service           | [GIN-debug] GET    /*path                    --> server.Start.func1 (3 handlers)
+simple-web-service           | [GIN-debug] Listening and serving HTTP on :8080
+simple-web-service           | [GIN] 2022/06/02 - 09:59:58 | 200 |      51.489µs |      172.21.0.1 | GET      "/"
+simple-web-service           | [GIN] 2022/06/02 - 09:59:59 | 200 |      59.464µs |      172.21.0.1 | GET      "/"
+simple-web-service           | [GIN] 2022/06/02 - 10:00:00 | 200 |      46.739µs |      172.21.0.1 | GET      "/"
+^CGracefully stopping... (press Ctrl+C again to force)
+Killing simple-web-service    ... done
+ERROR: 2
+(base) vuola@Markuss-MacBook-Air Exercise2.2 % 

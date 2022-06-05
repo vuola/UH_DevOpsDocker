@@ -1,0 +1,9 @@
+(base) vuola@Markuss-MacBook-Air scaling-exercise % docker-compose up -d --scale compute=3
+
+Creating network "scaling-exercise_default" with the default driver
+Creating calculator                 ... done
+Creating load-balancer              ... done
+Creating scaling-exercise_compute_1 ... done
+Creating scaling-exercise_compute_2 ... done
+Creating scaling-exercise_compute_3 ... done
+(base) vuola@Markuss-MacBook-Air scaling-exercise % 
