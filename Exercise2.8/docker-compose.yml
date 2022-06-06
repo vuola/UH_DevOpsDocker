@@ -1,19 +1,28 @@
 services:
+  proxy:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+    networks:
+      - sandbox
+    depends_on:
+      - backend
+
   frontend:
     image: example-frontend
-    ports:
-      - "5000:5000"
     build: 
       context: front
       args:
-        - _REACT_APP_BACKEND_URL_=http://localhost:8000
-    networks: 
+        - _REACT_APP_BACKEND_URL_=http://backend:8000
+    networks:
       - sandbox
 
   backend:
     environment:
       - PORT=8000
-      - REQUEST_ORIGIN=http://localhost:5000
+      - REQUEST_ORIGIN=http://proxy
       - REDIS_HOST=cache-redis
       - POSTGRES_HOST=db_backend
       - POSTGRES_USER=postgres
@@ -21,9 +30,7 @@ services:
       - POSTGRES_DATABASE=postgres
     image: example-backend
     networks:
-      - sandbox
-    ports:
-      - "8000:8000" 
+      - sandbox 
     build:
       context: back
     restart: unless-stopped
@@ -34,9 +41,9 @@ services:
     image: redis
     command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
     volumes:
-    - cache-data:/etc/data
+      - cache-data:/etc/data
     networks:
-    - sandbox
+      - sandbox
 
   db_backend:
     image: postgres:13.2-alpine

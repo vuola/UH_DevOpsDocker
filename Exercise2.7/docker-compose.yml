@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  frontend:
+    ports:
+      - "3000:3000"
+    build: 
+      context: frontend
+    container_name: frontend
+
+  backend:
+    ports:
+      - "5000:5000" 
+    build:
+      context: backend
+    container_name: backend
+    restart: unless-stopped
+    depends_on:
+      - training
+    volumes:
+      - model:/src/model
+
+  training:
+    build:
+      context: training
+    container_name: training
+    volumes:
+      - model:/src/model
+      - images:/src/imgs
+
+volumes:
+  model:
+  images:
