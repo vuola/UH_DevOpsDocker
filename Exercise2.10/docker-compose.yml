@@ -1,0 +1,82 @@
+services:
+  proxy:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+    networks:
+      - sandbox
+    depends_on:
+      - backend
+
+  frontend:
+    image: example-frontend
+# Excercise 2.6 config: ports: "5000:5000"
+#   map frontend port 5000 to localhost
+    build: 
+      context: front
+      args:
+# Excercise 2.6 config: - _REACT_APP_BACKEND_URL_=http://localhost:8000
+# Excercise 2.8 config: - s_REACT_APP_BACKEND_URL_=http://backend:8000
+#    private Docker network "sandbox" in use between frontend and backend
+# Excercise 2.10 LATEST:  
+#   Route the requests from frontend to backend via nginx proxy 
+#   service. Take advantage of the nginx address resolution configuration.
+#
+        - _REACT_APP_BACKEND_URL_=http://localhost/api
+    networks:
+      - sandbox
+
+  backend:
+    environment:
+      - PORT=8000
+# Excercise 2.6 config: - REQUEST_ORIGIN=http://localhost:5000
+# Excercise 2.10 LATEST:
+#   requests to backend are coming in from proxy.
+#
+      - REQUEST_ORIGIN=http://proxy
+      - REDIS_HOST=cache-redis
+      - POSTGRES_HOST=db_backend
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DATABASE=postgres
+    image: example-backend
+    networks:
+      - sandbox
+# Excercise 2.6 config: ports: "8000:8000"
+#   map backend port 8000 to localhost  
+    build:
+      context: back
+    restart: unless-stopped
+    depends_on:
+      - db_backend
+
+  cache-redis:
+    image: redis
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+    volumes:
+      - cache-data:/etc/data
+    networks:
+      - sandbox
+
+  db_backend:
+    image: postgres:13.2-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=postgres
+    container_name: db_backend
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    networks:
+      - sandbox
+
+volumes:
+  cache-data:
+
+networks:
+  sandbox:
+    name: sandbox
+
