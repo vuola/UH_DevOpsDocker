@@ -60,7 +60,6 @@ The analysis is followed by generation of a random story with completed sentence
 
 CALL SYNTAX FROM A SHELL PROMPT
 
-	> python3 markov.py 6 2
+	> python server.py
 
-Prints out a random story with 6 sentences using a Markov analysis with prefix length 2
-
+Starts the service creating 5 sentences using markov chain lenght 5. The parameters can be changed in file markov_server.py, in function markov(). 
